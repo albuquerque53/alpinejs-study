@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World!</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <!-- Declaring the variable "title" -->
+        <div x-data="{title:'Hello, World!'}">
+
+            <!-- Defining the content of H1 with x-text, assignig his value as defined variable "title" -->
+            <h1 x-text="title"></h1>
+
+        </div>
+
+        <!-- Should not appear because it's off from div where "title" is defined -->
+        <h2 x-text="title"></h2>
+
+    </body>
+</html>
