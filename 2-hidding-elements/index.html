@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World!</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <!-- Declaring the variable "open" -->
+        <div x-data="{open:false}">
+
+            <!-- Using x-on:click to switch value of open variable on button click -->
+            <button type="button" x-on:click="open=!open">Show/hide secret message</button>
+
+            <!-- Using show we can apply a logic to define if an element will be shown -->
+            <p x-show="open">Secret message</p>
+
+        </div>
+
+    </body>
+</html>
