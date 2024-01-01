@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>X-Model example</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <!-- Defining name and toLower function that will access name and turn it to lowercase -->
+        <div x-data="{
+            name:'Albuca',
+            toLower(){
+                this.name = this.name.toLowerCase()
+            }
+        }"/>
+
+            <!-- This input will reflect in the value of name variable -->
+            <input type="text" x-model="name">
+
+            <span x-text="name"></span>
+
+            <!-- When user click on this button, it'll call the toLower function defined in x-data -->
+            <button type="button" x-on:click="toLower">Turn name to lowercase</button>
+            
+        </div>
+
+    </body>
+</html>
