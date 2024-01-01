@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>X-Model example</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <section
+            x-data="{
+                search: '',
+                result: {},
+                searchProduct() {
+                    fetch('https://dummyjson.com/products/search?q=' + this.search)
+                        .then(res => res.json())
+                        .then(json => this.result = json);
+                }
+            }"
+        />
+
+            <input type="text" x-model="search" placeholder="Product">
+            <button type="button" x-on:click="searchProduct">Search</button>
+
+            <p x-show="result.total < 1">
+                Could not found product
+            </p>
+
+            <template x-for="product in result.products" :key="product.id">
+                <li x-text="product.title"></li>
+            </template>
+
+        </section>
+
+    </body>
+</html>
