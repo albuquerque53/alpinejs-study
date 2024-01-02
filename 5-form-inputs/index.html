@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inputs</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <!-- First example: simple checkbox -->
+        <h2>1. Checkbox</h2>
+        <form x-data="{terms: false}">
+
+            <!-- When checkbox is checket, the model receive a boolean value -->
+            <input type="checkbox" x-model="terms">
+            <span x-text="terms"></span>
+
+        </form>
+
+        <hr>
+
+        <!-- First example: multiple checkboxes -->
+        <h2>2. Multiple checkboxes</h2>
+
+        <!-- "posts" variable is an array of values -->
+        <form
+            action=""
+            x-data="{
+                posts: [],
+                submit () {
+                    console.log(this.posts)
+                }
+            }"
+            x-on:submit.prevent="submit()"
+        >
+
+            <!-- Each checkbox represents a "value" that will be added in "posts" -->
+            <input type="checkbox" x-model="posts" value="1"> Post 1 <br/>
+            <input type="checkbox" x-model="posts" value="abc"> Post 2 <br/>
+            <input type="checkbox" x-model="posts" value="3"> Post 3 <br/>
+
+            <!-- Simple span to show how the checkboxes values are insert inside posts variable -->
+            <span x-text="posts"></span>
+
+            <!-- ".prevent" on this click event is necessary to prevent default form behavior
+            that'll clear the console -->
+            <button type="submit" x-on:click.prevent="submit">Submit with prevent</button>
+
+            <!-- In this example, the submit will work because we are preventing it on line 15
+            directly in form -->
+            <button type="submit">Submit with overwrite</button>
+
+        </form>
+
+        <hr>
+
+        <!-- Third example: select -->
+        <h2>3. Selects</h2>
+        <form x-data="{plan: ''}">
+
+            <!-- Assigining "plan" to this select, will assign the respective
+            selected value to plan variable -->
+            <select x-model="plan">
+                <option value="">Select</option>
+                <option value="monthly">Monthly</option>
+                <option value="yearly">Yearly</option>
+            </select>
+
+            <span x-text="plan"></span>
+
+        </form>
+        
+        <hr>
+
+        <!-- Third example: select -->
+        <h2>3. Selects</h2>
+        <form x-data="{plan: ''}">
+
+            <!-- In this case, we assign the plan variable to each respective radio
+            option, when radion is activated, his value is assigned to plan -->
+            <input type="radio" x-model="plan" value="monthly">
+            <input type="radio" x-model="plan" value="yearly">
+
+            <span x-text="plan"></span>
+
+        </form>
+
+    </body>
+</html>
