@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML Manipulation</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+
+        <style>
+            .red {
+                color: red;
+            }
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>1. Style manipulation</h2>
+        <!-- Class/style manipulation -->
+        <div x-data="{ shouldApplyRed: false }">
+
+            <!-- If shouldApplyRed it's true, the class .red will be applied to this
+            span -->
+            <span x-bind:class="{ 'red': shouldApplyRed }" class="bold">Olá, mundo!</span>
+
+            <button x-on:click="shouldApplyRed = !shouldApplyRed">Switch</button>
+
+        </div>
+
+        <hr>
+
+        <h2>2. IMG manipulation</h2>
+        <!-- IMG manipulation -->
+        <div
+            x-data="{
+                imageSrc: '',
+                baseUrl: 'https://via.placeholder.com/',
+                generateRandomSrc () {
+                    imgSize = Math.floor(Math.random() * (151 - 100) ) + 100;
+                    this.imageSrc = this.baseUrl + imgSize
+                }
+            }"
+            x-init="generateRandomSrc()"
+        >
+
+            <img x-bind:src="imageSrc">
+
+            <button x-on:click="generateRandomSrc()">Change IMG</button>
+
+        </div>
+        
+    </body>
+</html>
