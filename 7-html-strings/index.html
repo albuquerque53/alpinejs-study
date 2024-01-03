@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Working with HTML Text</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+                
+        <section
+            x-data="{
+                customText: 'Dynamic Text',
+                textWithFmt: 'Text with <b>bold</b>'
+            }"
+        >
+
+            <!-- Simple way to show a string inside a tag -->
+            <h1 x-text="customText"></h1>
+
+            <!-- Wrong way to display a string with HTML tags -->
+            <!-- <p x-text="textWithFmt"></p> -->
+
+            <!-- When we want to assign a string with HTML tags that must be interpreted
+            we should use x-html instead of x-text -->
+            <p x-html="textWithFmt"></p>
+
+        </section>
+                
+    </body>
+</html>
