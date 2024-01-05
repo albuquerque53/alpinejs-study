@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Working with HTML Text</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+                
+        <!-- First example: x-for through array items -->
+        <section
+            x-data="{ todo: ['task_1', 'task_2', 'task_3'] }"
+        >
+            <ul>
+
+                <!-- Running through "todo" items -->
+                <template x-for="task in todo">
+
+                    <li x-text="task"></li>
+
+                </template>
+
+            </ul>
+        </section>
+
+        <hr>
+        
+        <!-- Second example: x-for through array objects -->
+        <section
+            x-data="{
+                posts:[
+                    {id: 1, title:'First Post', body: 'First post content'},
+                    {id: 2, title:'Second Post', body: 'Second post content'},
+                    {id: 3, title:'Third Post', body: 'Third post content'},
+                ]
+            }"
+        >
+            <ul>
+
+                <!-- Running through "posts" objects -->
+                <template x-for="post in posts" :key="post.id">
+                    <article>
+
+                        <header>
+                            <h3 x-text="post.title"></h3>
+                        </header>
+
+                        <div x-html="post.body"></div>
+
+                    </article>
+                </template>
+
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- Third example: x-for through array objects -->
+        <section
+            x-data="{
+                posts:[
+                    {id: 1, title:'First Post', body: 'First post content'},
+                    {id: 2, title:'Second Post', body: 'Second post content'},
+                    {id: 3, title:'Third Post', body: 'Third post content'},
+                ]
+            }"
+        >
+            <ul>
+
+                <!-- Running through "posts" objects defining "index" -->
+                <template x-for="(post, index) in posts" :key="post.id">
+                    <article>
+
+                        <header>
+                            <h3>
+                                <span x-text="index + 1"></span>
+                                <span x-text="post.title"></span>
+                            </h3>
+                        </header>
+
+                        <div x-html="post.body"></div>
+
+                    </article>
+                </template>
+
+            </ul>
+        </section>
+                
+    </body>
+</html>
