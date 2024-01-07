@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Working conditionals</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <section
+            x-data="{
+                open: false,
+            }"
+        >
+
+            <button x-on:click="open = !open">Switch open/close</button>
+
+            <!-- x-show will enable/disable the exibition of an element based on condition -->
+            <p x-show="open">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus alias assumenda eveniet</p>
+
+            <!-- x-if will render/not render an element based on condition -->
+            <template x-if="open">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus alias assumenda eveniet</p>
+            </template>
+
+        </section>
+                        
+    </body>
+</html>
