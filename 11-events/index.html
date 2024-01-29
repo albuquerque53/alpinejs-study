@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Events</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+        <section x-data="{
+            show_modal: false
+        }">
+
+            <h2>X-ON:Clik and @Click</h2>
+
+            <button x-on:click="alert('This alert is showed through x-on:click directive!')">Show Alert (x-on)</button>
+
+            <!-- Same as x-on:click, we can use @click -->
+            <button @click="alert('This alert is showed through @click directive!')">Show Alert (@click)</button> <br>
+
+            <hr>
+
+            <h2>@KeyUP</h2>
+
+            <!-- The @keyup directive listens to pressed keys and executes some logic -->
+            <label for="search">Showing alert with(@keyup.enter)</label>
+            <input id="search" type="search" placeholder="Search" @keyup.enter="alert('Enter key pressed in search input!')"> <br>
+
+            <!-- The $el variable can be used to access information of current element -->
+            <label for="search">Alert with element info (@keyup.enter + $el)</label>
+            <input id="search" type="search" placeholder="Search" @keyup.enter="alert('Input value: ' + $el.value)">
+
+            <hr>
+
+            <h2>Preventing "default" events</h2>
+
+            <h3>@Submit.Prevent on form</h3>
+            <form action="" @submit.prevent="alert('Form submitted!')">
+                <input type="text" placeholder="Text">
+
+                <button type="submit">Submit data</button>
+            </form>
+
+            <hr>
+
+            <h2>Custom events</h2>
+
+            <h3>Custom @modal event dispatched from button</h3>
+            <button type="button" @click="$dispatch('modal')">Click here to show modal</button>
+
+            <!-- Here I'm listening to a new event called @modal, when the @modal is called the variable show_modal is toggled -->
+            <!-- Also I add a keyup event to listen when "esc" key is pressed to close the modal -->
+            <div @modal.window="show_modal=!show_modal" @keyup.escape.window="show_modal=false" x-show="show_modal">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </div>
+
+        </section>
+    </body>
+</html>
