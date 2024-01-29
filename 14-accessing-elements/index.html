@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Refs</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <div x-data="{}">
+
+            <!-- With x-ref we can add a global reference for an element -->
+            <h1 x-ref="title">Title to be removed</h1>
+            
+            <!-- Now, we can access the title using $refs variable -->
+            <button @click="$refs.title.remove()">
+                Delete title
+            </button>
+
+        </div>
+
+    </body>
+</html>
