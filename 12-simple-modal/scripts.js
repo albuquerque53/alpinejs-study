@@ -1,8 +1,8 @@
 function setup() {
     return {
         showModal: false,
-        title: 'Oi',
-        content: 'oasad',
+        title: '',
+        content: '',
 
         handleModalEvent(e) {
             this.title = e.detail.title;
