@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Simple Modal</title>
+
+        <!-- Tailwind import -->
+        <script src="https://cdn.tailwindcss.com" defer></script>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+
+        <!-- Scripts -->
+        <script src="scripts.js"></script>
+    </head>
+    <body>
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum molestias quas inventore aliquam, ullam quos ipsum vitae eius quibusdam qui consequuntur debitis eaque porro hic amet incidunt veniam itaque neque.
+
+        <section x-data="setup()">
+
+            <div
+                @modal.window="handleModalEvent"
+                x-show="showModal"
+                class="absolute flex items-center justify-center inset-0 text-red-600" style="background: rgba(0,0,0,0.7)"
+            >
+                <div class="w-1/3 divide-y space-y-4 bg-white p-4 rounded-lg shadow border border-black">
+                    <header class="flex justify-between items-center">
+                        <h4 class="font-bold text-lg" x-text="title"></h4>
+                        <span
+                            class="cursor-pointer"
+                            @keyup.escape.window="showModal = false"
+                            @click="showModal = false"
+                        >
+                            x
+                        </span>
+                    </header>
+
+                    <section class="pt-4" x-html="content"></section>
+                </div>
+            </div>
+        </section>
+
+        <section x-data="formData()">
+            <label for="title">Article title</label> <br>
+            <input id="title" x-model="title" class="border rounded-lg">
+
+            <hr class="my-4">
+
+            <label for="content">Article content</label> <br>
+            <input id="content" x-model="content" class="border rounded-lg">
+
+            <hr class="my-4">
+
+            <button
+                type="button"
+                class="inline-flex items-center bg-red-500 text-white px-3 rounded"
+                @click="submit()"
+            >
+                Submit article
+            </button>
+        </section>
+
+    </body>
+</html>
