@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Watching variables</title>
+
+        <!-- AlpineJS import -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+
+        <section
+            x-data="{
+                open: false,
+            }"
+            x-init="$watch('open', (newValue, oldValue) => console.log('Open changed from: ' + oldValue + ' to: ' + newValue))"
+        >
+            <button type="button" @click="open = ! open">Toggle open</button>
+        </section>
+
+    </body>
+</html>
